@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e2f;
+            color: white;
+            min-height: 100vh;
+            margin: 0;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #2d2d44;
+            width: 700px;
+            max-width: 95%;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        #question {
+            margin-bottom: 20px;
+        }
+
+        .option {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #feedback {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        #nextBtn,
+        #backBtn {
+            margin-top: 15px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1 id="quizTitle">Quiz</h1>
+
+    <div id="quiz">
+
+        <h2 id="question"></h2>
+
+        <button id="optionA" class="option"></button>
+        <button id="optionB" class="option"></button>
+        <button id="optionC" class="option"></button>
+        <button id="optionD" class="option"></button>
+
+        <div id="feedback"></div>
+
+        <button id="nextBtn">Next Question</button>
+
+    </div>
+
+    <div id="result"></div>
+
+    <button id="backBtn"
+            onclick="location.href='index.html'">
+        Back To Menu
+    </button>
+
+</div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const category = params.get("category");
+
+const title = document.getElementById("quizTitle");
+
+let scriptFile = "";
+
+switch (category) {
+
+    case "geography":
+        title.textContent = "Geography Quiz";
+        scriptFile = "geography.js";
+        break;
+
+    case "videogames":
+        title.textContent = "Video Games Quiz";
+        scriptFile = "video games.js";
+        break;
+
+    case "coding":
+        title.textContent = "Coding Quiz";
+        scriptFile = "coding.js";
+        break;
+
+    default:
+        document.getElementById("question").textContent =
+            "Invalid category selected.";
+}
+
+if (scriptFile !== "") {
+
+    const script = document.createElement("script");
+    script.src = scriptFile;
+
+    script.onerror = function () {
+        document.getElementById("question").textContent =
+            "Could not load " + scriptFile;
+    };
+
+    document.body.appendChild(script);
+}
+
+</script>
+
+</body>
+</html>

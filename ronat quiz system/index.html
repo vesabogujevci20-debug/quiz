@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e2f;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #2d2d44;
+            padding: 40px;
+            border-radius: 12px;
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #bbbbcc;
+            margin-bottom: 30px;
+        }
+
+        .quiz-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .quiz-button:hover {
+            transform: scale(1.03);
+        }
+
+        .geography {
+            background-color: #3498db;
+        }
+
+        .video-games {
+            background-color: #9b59b6;
+        }
+
+        .coding {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Quiz Game</h1>
+
+        <p>Choose a quiz category</p>
+
+        <button
+            class="quiz-button geography"
+            onclick="location.href='quiz.html?category=geography'">
+            🌎 Geography
+        </button>
+
+        <button
+            class="quiz-button video-games"
+            onclick="location.href='quiz.html?category=videogames'">
+            🎮 Video Games
+        </button>
+
+        <button
+            class="quiz-button coding"
+            onclick="location.href='quiz.html?category=coding'">
+            💻 Coding
+        </button>
+
+    </div>
+
+</body>
+</html>
