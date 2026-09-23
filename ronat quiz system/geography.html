@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geography Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode {
+            background-color: #1e1e1e;
+            color: #f4f4f4;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .options button {
+            display: block;
+            width: 100%;
+            margin: 8px 0;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            color: #333;
+        }
+
+        body.dark-mode .options button {
+            background-color: #333;
+            color: #fff;
+            border-color: #555;
+        }
+
+        .options button:disabled {
+            cursor: not-allowed;
+        }
+
+        #feedback {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        #nextBtn, .toggle-btn, #result button {
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            margin-top: 10px;
+        }
+
+        #nextBtn:hover, .toggle-btn:hover, #result button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>Geography Quiz</h2>
+        <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </header>
+
+    <div id="quiz">
+        <p id="question"></p>
+
+        <div class="options">
+            <button id="optionA"></button>
+            <button id="optionB"></button>
+            <button id="optionC"></button>
+            <button id="optionD"></button>
+        </div>
+
+        <p id="feedback"></p>
+
+        <button id="nextBtn">Next Question</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        const questions = [
+            {
+                question: "What is the capital city of France?",
+                options: ["Paris", "Madrid", "Rome", "Berlin"],
+                correctAnswer: 0
+            },
+            {
+                question: "Which is the largest continent by area?",
+                options: ["Africa", "Asia", "Europe", "North America"],
+                correctAnswer: 1
+            },
+            {
+                question: "Which ocean is the largest in the world?",
+                options: ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"],
+                correctAnswer: 2
+            },
+            {
+                question: "What is the capital of Japan?",
+                options: ["Kyoto", "Osaka", "Tokyo", "Hiroshima"],
+                correctAnswer: 2
+            },
+            {
+                question: "Which country has the largest land area?",
+                options: ["Canada", "China", "Russia", "United States"],
+                correctAnswer: 2
+            },
+            {
+                question: "Which desert is the largest hot desert in the world?",
+                options: ["Gobi Desert", "Sahara Desert", "Kalahari Desert", "Atacama Desert"],
+                correctAnswer: 1
+            },
+            {
+                question: "What is the capital of Australia?",
+                options: ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+                correctAnswer: 2
+            },
+            {
+                question: "Which mountain is the highest above sea level?",
+                options: ["Mount Kilimanjaro", "Mount Everest", "K2", "Mount Elbrus"],
+                correctAnswer: 1
+            },
+            {
+                question: "Which country is home to the city of Barcelona?",
+                options: ["Portugal", "Italy", "Spain", "France"],
+                correctAnswer: 2
+            },
+            {
+                question: "Which continent is Egypt primarily located in?",
+                options: ["Asia", "Europe", "Africa", "South America"],
+                correctAnswer: 2
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answerSelected = false;
+
+        const questionElement = document.getElementById("question");
+        const optionButtons = [
+            document.getElementById("optionA"),
+            document.getElementById("optionB"),
+            document.getElementById("optionC"),
+            document.getElementById("optionD")
+        ];
+        const feedbackElement = document.getElementById("feedback");
+        const nextButton = document.getElementById("nextBtn");
+        const resultElement = document.getElementById("result");
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+
+        function loadQuestion() {
+            const question = questions[currentQuestion];
+            questionElement.textContent = question.question;
+
+            optionButtons.forEach((button, index) => {
+                button.textContent = question.options[index];
+                button.disabled = false;
+                button.style.backgroundColor = "";
+                button.onclick = () => checkAnswer(index);
+            });
+
+            feedbackElement.textContent = "";
+            answerSelected = false;
+        }
+
+        function checkAnswer(selectedAnswer) {
+            if (answerSelected) return;
+            answerSelected = true;
+
+            const correctAnswer = questions[currentQuestion].correctAnswer;
+
+            if (selectedAnswer === correctAnswer) {
+                score++;
+                feedbackElement.textContent = "Correct!";
+                feedbackElement.style.color = "green";
+                optionButtons[selectedAnswer].style.backgroundColor = "lightgreen";
+            } else {
+                feedbackElement.textContent = "Wrong!";
+                feedbackElement.style.color = "red";
+                optionButtons[selectedAnswer].style.backgroundColor = "lightcoral";
+                optionButtons[correctAnswer].style.backgroundColor = "lightgreen";
+            }
+
+            optionButtons.forEach(button => {
+                button.disabled = true;
+            });
+        }
+
+        nextButton.addEventListener("click", () => {
+            if (!answerSelected) {
+                feedbackElement.textContent = "Please select an answer.";
+                feedbackElement.style.color = "orange";
+                return;
+            }
+
+            currentQuestion++;
+
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        });
+
+        function showResult() {
+            document.getElementById("quiz").style.display = "none";
+            resultElement.innerHTML = `
+                <h2>Quiz Finished!</h2>
+                <p>You scored ${score} out of ${questions.length}.</p>
+                <button onclick="restartQuiz()">Restart Quiz</button>
+            `;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            resultElement.innerHTML = "";
+            document.getElementById("quiz").style.display = "block";
+            loadQuestion();
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>
