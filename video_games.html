@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coding Quiz</title>
+    <title>Video Games Quiz</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             color: #333;
-            max-width: 500px;
-            margin: 40px auto;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 0;
+            padding: 0;
         }
 
         body.dark-mode {
@@ -21,11 +18,55 @@
             color: #f4f4f4;
         }
 
-        header {
+        /* Navbar Styling */
+        nav {
+            background-color: #ffffff;
+            border-bottom: 1px solid #ddd;
+            padding: 12px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+        }
+
+        body.dark-mode nav {
+            background-color: #2b2b2b;
+            border-bottom-color: #444;
+        }
+
+        nav .nav-brand {
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        nav .nav-links a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: 500;
+        }
+
+        nav .nav-links a:hover {
+            color: #007bff;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .container {
+            background: #2b2b2b;
         }
 
         .options button {
@@ -56,7 +97,7 @@
             margin: 10px 0;
         }
 
-        #nextBtn, .toggle-btn, #result button {
+        .btn {
             padding: 8px 16px;
             font-size: 14px;
             cursor: pointer;
@@ -65,88 +106,111 @@
             background-color: #007bff;
             color: white;
             margin-top: 10px;
+            text-decoration: none;
+            display: inline-block;
         }
 
-        #nextBtn:hover, .toggle-btn:hover, #result button:hover {
+        .btn:hover {
             background-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h2>Coding Quiz</h2>
-        <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
-    </header>
+    <nav>
+        <a href="mainpage.html" class="nav-brand">QUIZ TIME!</a>
+        <div class="nav-links">
+            <a href="mainpage.html">Home</a>
+            <a href="contact.html">Contact Us</a>
+            <button class="btn" style="margin-top:0;" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+        </div>
+    </nav>
 
-    <div id="quiz">
-        <p id="question"></p>
+    <div class="container">
+        <div id="quiz">
+            <h2>Video Games Quiz</h2>
+            <p id="question"></p>
 
-        <div class="options">
-            <button id="optionA"></button>
-            <button id="optionB"></button>
-            <button id="optionC"></button>
-            <button id="optionD"></button>
+            <div class="options">
+                <button id="optionA"></button>
+                <button id="optionB"></button>
+                <button id="optionC"></button>
+                <button id="optionD"></button>
+            </div>
+
+            <p id="feedback"></p>
+
+            <button id="nextBtn" class="btn">Next Question</button>
         </div>
 
-        <p id="feedback"></p>
-
-        <button id="nextBtn">Next Question</button>
+        <div id="result"></div>
     </div>
-
-    <div id="result"></div>
 
     <script>
         const questions = [
             {
-                question: "What does HTML stand for?",
-                options: ["Hyper Text Markup Language", "High Text Machine Language", "Hyperlinks Text Mark Language", "Home Tool Markup Language"],
-                correctAnswer: 0
-            },
-            {
-                question: "Which language is used to style web pages?",
-                options: ["JavaScript", "Python", "CSS", "Java"],
-                correctAnswer: 2
-            },
-            {
-                question: "Which language is primarily used to add interactivity to web pages?",
-                options: ["HTML", "CSS", "JavaScript", "SQL"],
-                correctAnswer: 2
-            },
-            {
-                question: "Which symbol is used for a single-line comment in JavaScript?",
-                options: ["//", "##", "<!--", "**"],
-                correctAnswer: 0
-            },
-            {
-                question: "Which method is commonly used to print a message to the browser console?",
-                options: ["console.log()", "console.print()", "print.console()", "browser.log()"],
-                correctAnswer: 0
-            },
-            {
-                question: "Which data type can contain true or false?",
-                options: ["String", "Number", "Boolean", "Array"],
-                correctAnswer: 2
-            },
-            {
-                question: "Which operator is used to assign a value to a variable?",
-                options: ["==", "=", "===", "!="],
+                question: "Which company created the Super Mario franchise?",
+                options: ["Sony", "Nintendo", "Sega", "Microsoft"],
                 correctAnswer: 1
             },
             {
-                question: "Which HTML tag is used to create a paragraph?",
-                options: ["<h1>", "<div>", "<p>", "<paragraph>"],
-                correctAnswer: 2
+                question: "What is the name of the main character in The Legend of Zelda?",
+                options: ["Zelda", "Link", "Ganondorf", "Epona"],
+                correctAnswer: 1
             },
             {
-                question: "Which keyword is used to declare a function in JavaScript?",
-                options: ["function", "func", "define", "method"],
+                question: "Which game features the character Master Chief?",
+                options: ["Halo", "Destiny", "Doom", "Half-Life"],
                 correctAnswer: 0
             },
             {
-                question: "Which operator checks both value and type in JavaScript?",
-                options: ["=", "==", "===", "!="],
+                question: "Which game is known for the term 'Victory Royale'?",
+                options: ["Apex Legends", "Fortnite", "PUBG", "Overwatch"],
+                correctAnswer: 1
+            },
+            {
+                question: "Which company developed Minecraft?",
+                options: ["Mojang", "Valve", "Epic Games", "Ubisoft"],
+                correctAnswer: 0
+            },
+            {
+                question: "Which character is the protagonist of the God of War series?",
+                options: ["Dante", "Kratos", "Geralt", "Master Chief"],
+                correctAnswer: 1
+            },
+            {
+                question: "Which company makes the PlayStation consoles?",
+                options: ["Microsoft", "Nintendo", "Sony", "Sega"],
                 correctAnswer: 2
+            },
+            {
+                question: "In Minecraft, which material is used to create a Nether Portal?",
+                options: ["Diamond", "Obsidian", "Iron", "Gold"],
+                correctAnswer: 1
+            },
+            {
+                question: "Which game series features the character Link?",
+                options: ["Final Fantasy", "The Legend of Zelda", "Pokémon", "Kingdom Hearts"],
+                correctAnswer: 1
+            },
+            {
+                question: "Which company developed the Sonic the Hedgehog series?",
+                options: ["Sega", "Nintendo", "Capcom", "Electronic Arts"],
+                correctAnswer: 0
             }
         ];
 
@@ -230,7 +294,10 @@
             resultElement.innerHTML = `
                 <h2>Quiz Finished!</h2>
                 <p>You scored ${score} out of ${questions.length}.</p>
-                <button onclick="restartQuiz()">Play Again</button>
+                <div class="result-actions">
+                    <button class="btn" onclick="restartQuiz()">Play Again</button>
+                    <a href="mainpage.html" class="btn btn-secondary">Return to Main Page</a>
+                </div>
             `;
         }
 
