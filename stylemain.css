@@ -1,11 +1,30 @@
+:root {
+  --primary-color: #007bff;
+  --dark-bg: #121212;
+  --dark-card: #1e1e1e;
+  --transition-speed: 0.3s;
+}
 
 body {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   background-color: #f8f9fa;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
+.hero-title {
+  animation: pulseGlow 3s infinite alternate;
+}
 
-
+@keyframes pulseGlow {
+  0% {
+    transform: scale(1);
+    color: #212529;
+  }
+  100% {
+    transform: scale(1.02);
+    color: #007bff;
+  }
+}
 
 .slide-image-wrapper {
   position: relative;
@@ -13,6 +32,9 @@ body {
   height: 480px;
   background-color: #111;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .slide-img {
@@ -21,14 +43,14 @@ body {
   object-fit: cover;
   object-position: center;
   filter: brightness(0.75);
+  opacity: 0.85;
   transition: transform 0.5s ease;
 }
 
-
+.slide-image-wrapper:hover .slide-img,
 .carousel-item:hover .slide-img {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
-
 
 .custom-caption {
   position: absolute;
@@ -42,7 +64,6 @@ body {
   border-radius: 1.25rem;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
-
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
@@ -59,12 +80,65 @@ body {
   margin: 0 5px;
 }
 
+.media-container {
+  display: flex;
+  flex-direction: column;
+}
+
+body.dark-mode {
+  background-color: var(--dark-bg) !important;
+  color: #f4f4f4 !important;
+}
+
+body.dark-mode .navbar {
+  background-color: var(--dark-card) !important;
+  border-bottom: 1px solid #333;
+}
+
+body.dark-mode .navbar-brand,
+body.dark-mode .nav-link {
+  color: #f4f4f4 !important;
+}
+
+body.dark-mode .bg-white {
+  background-color: var(--dark-card) !important;
+  color: #f4f4f4 !important;
+}
+
+body.dark-mode .card {
+  background-color: #2b2b2b !important;
+  color: #fff !important;
+}
+
+body.dark-mode .table {
+  color: #fff !important;
+}
+
+body.dark-mode .form-control {
+  background-color: #2b2b2b;
+  color: #fff;
+  border-color: #444;
+}
+
+body.dark-mode .btn-outline-dark {
+  color: #fff;
+  border-color: #fff;
+}
+
+body.dark-mode .btn-outline-dark:hover {
+  background-color: #fff;
+  color: #000;
+}
 
 @media (max-width: 768px) {
   .slide-image-wrapper {
     height: 380px;
   }
-  
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
   .custom-caption {
     bottom: 1rem;
     left: 4%;
