@@ -1,6 +1,3 @@
-// ==========================================
-// VIDEO GAME QUESTIONS
-// ==========================================
 
 const questions = [
     {
@@ -114,17 +111,12 @@ const questions = [
     }
 ];
 
-// ==========================================
-// QUIZ VARIABLES
-// ==========================================
 
 let currentQuestion = 0;
 let score = 0;
 let answerSelected = false;
 
-// ==========================================
-// GET HTML ELEMENTS
-// ==========================================
+
 
 const questionElement = document.getElementById("question");
 
@@ -139,9 +131,7 @@ const feedbackElement = document.getElementById("feedback");
 const nextButton = document.getElementById("nextBtn");
 const resultElement = document.getElementById("result");
 
-// ==========================================
-// LOAD QUESTION
-// ==========================================
+
 
 function loadQuestion() {
 
@@ -164,9 +154,6 @@ function loadQuestion() {
     answerSelected = false;
 }
 
-// ==========================================
-// CHECK ANSWER
-// ==========================================
 
 function checkAnswer(selectedAnswer) {
 
@@ -207,9 +194,6 @@ function checkAnswer(selectedAnswer) {
     });
 }
 
-// ==========================================
-// NEXT QUESTION
-// ==========================================
 
 nextButton.addEventListener("click", function () {
 
@@ -235,9 +219,6 @@ nextButton.addEventListener("click", function () {
     }
 });
 
-// ==========================================
-// SHOW RESULTS
-// ==========================================
 
 function showResults() {
 
@@ -256,9 +237,7 @@ function showResults() {
     `;
 }
 
-// ==========================================
-// RESTART QUIZ
-// ==========================================
+
 
 function restartQuiz() {
 
@@ -273,8 +252,6 @@ function restartQuiz() {
     loadQuestion();
 }
 
-// ==========================================
-// START THE QUIZ
-// ==========================================
+
 
 loadQuestion();

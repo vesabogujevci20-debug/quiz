@@ -1,6 +1,4 @@
-// ==============================
-// QUIZ DATA
-// ==============================
+
 
 const questions = [
     {
@@ -121,18 +119,12 @@ const questions = [
 
 
 
-// ==============================
-// VARIABLES
-// ==============================
-
 let currentQuestion = 0;
 let score = 0;
 let answerSelected = false;
 
 
-// ==============================
-// GET HTML ELEMENTS
-// ==============================
+
 
 const questionElement = document.getElementById("question");
 
@@ -148,9 +140,7 @@ const nextButton = document.getElementById("nextBtn");
 const resultElement = document.getElementById("result");
 
 
-// ==============================
-// LOAD QUESTION
-// ==============================
+
 
 function loadQuestion() {
 
@@ -161,13 +151,12 @@ function loadQuestion() {
     optionButtons.forEach((button, index) => {
         button.textContent = question.options[index];
 
-        // Enable the button
         button.disabled = false;
 
-        // Reset colors
+        
         button.style.backgroundColor = "";
 
-        // Remove previous event listeners
+        
         button.onclick = () => checkAnswer(index);
     });
 
@@ -176,13 +165,11 @@ function loadQuestion() {
 }
 
 
-// ==============================
-// CHECK ANSWER
-// ==============================
+
 
 function checkAnswer(selectedAnswer) {
 
-    // Prevent selecting multiple answers
+  
     if (answerSelected) {
         return;
     }
@@ -207,24 +194,22 @@ function checkAnswer(selectedAnswer) {
 
         optionButtons[selectedAnswer].style.backgroundColor = "lightcoral";
 
-        // Show the correct answer
+     
         optionButtons[correctAnswer].style.backgroundColor = "lightgreen";
     }
 
-    // Disable all options after answering
+   
     optionButtons.forEach(button => {
         button.disabled = true;
     });
 }
 
 
-// ==============================
-// NEXT QUESTION
-// ==============================
+
 
 nextButton.addEventListener("click", () => {
 
-    // Don't move forward until an answer is selected
+   
     if (!answerSelected) {
         feedbackElement.textContent = "Please select an answer.";
         feedbackElement.style.color = "orange";
@@ -233,7 +218,7 @@ nextButton.addEventListener("click", () => {
 
     currentQuestion++;
 
-    // Check if quiz is finished
+   
     if (currentQuestion < questions.length) {
 
         loadQuestion();
@@ -245,9 +230,7 @@ nextButton.addEventListener("click", () => {
 });
 
 
-// ==============================
-// SHOW FINAL RESULT
-// ==============================
+
 
 function showResult() {
 
@@ -261,9 +244,7 @@ function showResult() {
 }
 
 
-// ==============================
-// RESTART QUIZ
-// ==============================
+
 
 function restartQuiz() {
 
@@ -278,8 +259,5 @@ function restartQuiz() {
 }
 
 
-// ==============================
-// START QUIZ
-// ==============================
 
 loadQuestion();

@@ -1,6 +1,4 @@
-// ==========================================
-// CODING QUESTIONS
-// ==========================================
+
 
 const questions = [
     {
@@ -115,18 +113,12 @@ const questions = [
 ];
 
 
-// ==========================================
-// QUIZ VARIABLES
-// ==========================================
-
 let currentQuestion = 0;
 let score = 0;
 let answerSelected = false;
 
 
-// ==========================================
-// GET HTML ELEMENTS
-// ==========================================
+
 
 const questionElement =
     document.getElementById("question");
@@ -148,9 +140,7 @@ const resultElement =
     document.getElementById("result");
 
 
-// ==========================================
-// LOAD QUESTION
-// ==========================================
+
 
 function loadQuestion() {
 
@@ -158,27 +148,25 @@ function loadQuestion() {
         questions[currentQuestion];
 
 
-    // Display the question
     questionElement.textContent =
         question.question;
 
 
-    // Display the four options
     optionButtons.forEach((button, index) => {
 
         button.textContent =
             question.options[index];
 
 
-        // Enable button
+        
         button.disabled = false;
 
 
-        // Reset button color
+        
         button.style.backgroundColor = "";
 
 
-        // Connect button to answer function
+        
         button.onclick = function () {
 
             checkAnswer(index);
@@ -187,22 +175,19 @@ function loadQuestion() {
     });
 
 
-    // Clear previous feedback
+
     feedbackElement.textContent = "";
 
 
-    // Allow the player to answer
+   
     answerSelected = false;
 }
 
 
-// ==========================================
-// CHECK ANSWER
-// ==========================================
 
 function checkAnswer(selectedAnswer) {
 
-    // Prevent multiple answers
+   
     if (answerSelected) {
         return;
     }
@@ -215,9 +200,6 @@ function checkAnswer(selectedAnswer) {
         codingQuestions[currentQuestion].correctAnswer;
 
 
-    // --------------------------------------
-    // CORRECT
-    // --------------------------------------
 
     if (selectedAnswer === correctAnswer) {
 
@@ -231,16 +213,14 @@ function checkAnswer(selectedAnswer) {
             "green";
 
 
-        // Make selected answer green
+        
         optionButtons[selectedAnswer]
             .style.backgroundColor =
             "lightgreen";
     }
 
 
-    // --------------------------------------
-    // WRONG
-    // --------------------------------------
+    
 
     else {
 
@@ -251,20 +231,20 @@ function checkAnswer(selectedAnswer) {
             "red";
 
 
-        // Make selected answer red
+       
         optionButtons[selectedAnswer]
             .style.backgroundColor =
             "lightcoral";
 
 
-        // Show correct answer
+       
         optionButtons[correctAnswer]
             .style.backgroundColor =
             "lightgreen";
     }
 
 
-    // Disable all answer buttons
+   
     optionButtons.forEach(button => {
 
         button.disabled = true;
@@ -273,13 +253,10 @@ function checkAnswer(selectedAnswer) {
 }
 
 
-// ==========================================
-// NEXT QUESTION
-// ==========================================
 
 nextButton.addEventListener("click", function () {
 
-    // Make sure an answer was selected
+   
     if (!answerSelected) {
 
         feedbackElement.textContent =
@@ -292,11 +269,11 @@ nextButton.addEventListener("click", function () {
     }
 
 
-    // Move to the next question
+    
     currentQuestion++;
 
 
-    // Check if there are more questions
+   
     if (
         currentQuestion <
         codingQuestions.length
@@ -306,7 +283,7 @@ nextButton.addEventListener("click", function () {
 
     }
 
-    // Quiz is finished
+   
     else {
 
         showResults();
@@ -315,18 +292,16 @@ nextButton.addEventListener("click", function () {
 });
 
 
-// ==========================================
-// SHOW RESULTS
-// ==========================================
+
 
 function showResults() {
 
-    // Hide quiz
+  
     document.getElementById("quiz")
         .style.display = "none";
 
 
-    // Show result
+    
     resultElement.innerHTML = `
         <h2>Quiz Finished!</h2>
 
@@ -344,40 +319,35 @@ function showResults() {
 }
 
 
-// ==========================================
-// RESTART QUIZ
-// ==========================================
+
 
 function restartQuiz() {
 
-    // Reset question
+  
     currentQuestion = 0;
 
 
-    // Reset score
+    
     score = 0;
 
 
-    // Reset answer state
+    
     answerSelected = false;
 
 
-    // Clear result
+   
     resultElement.innerHTML = "";
 
 
-    // Show quiz
+  
     document.getElementById("quiz")
         .style.display = "block";
 
 
-    // Load first question
+   
     loadQuestion();
 }
 
 
-// ==========================================
-// START QUIZ
-// ==========================================
 
 loadQuestion();
