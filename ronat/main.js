@@ -33,10 +33,11 @@ function handleFormSubmit(e) {
 
   const name = nameInput.value.trim();
   const email = emailInput.value.trim();
+  
 
   let valid = true;
 
-  if (name.length < 2) {
+  if (name.length < 3) {
     nameInput.classList.add("is-invalid");
     valid = false;
   } else {

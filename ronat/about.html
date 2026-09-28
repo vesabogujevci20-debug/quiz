@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quiz Time!</title>
+  <title>About Us - Quiz Time!</title>
 
   <link 
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
@@ -43,19 +43,16 @@
       background-color: #fff;
       color: #000;
     }
-    body.dark-mode .modal-content {
-      background-color: #2b2b2b;
-      color: #fff;
-    }
-    body.dark-mode .form-control {
-      background-color: #333;
-      color: #fff;
-      border-color: #555;
+    body.dark-mode .card {
+      background-color: #1e1e1e !important;
+      color: #f4f4f4 !important;
+      border-color: #333 !important;
     }
   </style>
 </head>
 <body class="bg-light d-flex flex-column min-vh-100">
 
+  <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4 sticky-top">
     <div class="container-fluid">
       <a class="navbar-brand fw-bold fs-4 brand-animated" href="mainpage.html">QUIZ TIME!</a>
@@ -65,7 +62,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-semibold">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="mainpage.html">Home</a>
+            <a class="nav-link" href="mainpage.html">Home</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -78,7 +75,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About Us</a>
+            <a class="nav-link active" aria-current="page" href="about.html">About Us</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact Us</a>
@@ -91,75 +88,35 @@
     </div>
   </nav>
 
+  <!-- Hero Header -->
   <header class="text-center my-4 hero-banner py-3">
-    <h1 class="fw-extrabold display-3 tracking-tight hero-title">QUIZ TIME!</h1>
-    <p class="text-muted fs-5">Test Your Knowledge Across Multiple Categories</p>
+    <h1 class="fw-extrabold display-4 tracking-tight hero-title">About Quiz Time!</h1>
+    <p class="text-muted fs-5">Learn more about our platform and vision.</p>
   </header>
 
+  <!-- Main Content -->
   <main class="container my-auto px-3" style="max-width: 900px;">
     
-    <section class="mb-5">
-      <div id="quizCategoryCarousel" class="carousel slide shadow-lg rounded-4 overflow-hidden" data-bs-ride="carousel">
-        <div class="carousel-indicators mb-3">
-          <button type="button" data-bs-target="#quizCategoryCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Video Games"></button>
-          <button type="button" data-bs-target="#quizCategoryCarousel" data-bs-slide-to="1" aria-label="Geography"></button>
-          <button type="button" data-bs-target="#quizCategoryCarousel" data-bs-slide-to="2" aria-label="Coding"></button>
-        </div>
+    <!-- Mission Section (Original Text Size with Full Content) -->
+    <section class="card shadow-sm rounded-4 p-4 my-4">
+      <h3 class="fw-bold mb-3">Our Mission</h3>
+      
+      <p class="mb-3">
+        Quiz Time! was created to make learning fun, engaging, and accessible for everyone. Whether you want to test your memory on classic video games, explore world geography, or sharpen your coding skills, our interactive trivia platform is built to challenge your mind every day.
+      </p>
 
-        <div class="carousel-inner">
-          <article class="carousel-item active">
-            <div class="slide-image-wrapper">
-              <img src="fotot/video games.webp" class="d-block w-100 slide-img" alt="Video Games Quiz">
-            </div>
-            <div class="carousel-caption d-block custom-caption p-4">
-              <h2 class="fw-bold">Video Games</h2>
-              <p class="fs-6 text-light mb-3">Test your knowledge on classic and modern gaming trivia!</p>
-              <button class="btn btn-primary btn-lg rounded-pill px-5 fw-semibold shadow" onclick="location.href='video_games.html'">
-                Start Game Quiz
-              </button>
-            </div>
-          </article>
+      <p class="mb-3">
+        We believe that curiosity should be rewarded and knowledge continuously expanded. Our carefully curated quizzes are designed to entertain casual trivia enthusiasts while offering a satisfying challenge to hardcore experts across various technical and pop-culture topics.
+      </p>
 
-          <article class="carousel-item">
-            <div class="slide-image-wrapper">
-              <img src="fotot/geography-1000x667.jpg" class="d-block w-100 slide-img" alt="Geography Quiz">
-            </div>
-            <div class="carousel-caption d-block custom-caption p-4">
-              <h2 class="fw-bold">Geography</h2>
-              <p class="fs-6 text-light mb-3">Explore questions about world maps, capitals, and landmarks.</p>
-              <button class="btn btn-success btn-lg rounded-pill px-5 fw-semibold shadow" onclick="location.href='geography.html'">
-                Start Geography Quiz
-              </button>
-            </div>
-          </article>
-
-          <article class="carousel-item">
-            <div class="slide-image-wrapper">
-              <img src="fotot/code.png" class="d-block w-100 slide-img" alt="Coding Quiz">
-            </div>
-            <div class="carousel-caption d-block custom-caption p-4">
-              <h2 class="fw-bold">Coding</h2>
-              <p class="fs-6 text-light mb-3">Challenge your programming skills in HTML, CSS, JS, and Python.</p>
-              <button class="btn btn-warning btn-lg rounded-pill px-5 fw-semibold text-dark shadow" onclick="location.href='coding.html'">
-                Start Coding Quiz
-              </button>
-            </div>
-          </article>
-        </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#quizCategoryCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#quizCategoryCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+      <p class="mb-0">
+        Driven by modern web technologies and a passion for interactive learning, our goal is to build an inclusive community where players can continuously learn, compete, and discover new passion topics every single day.
+      </p>
     </section>
 
   </main>
 
+  <!-- Footer -->
   <footer class="mt-5 py-4 bg-white border-top">
     <div class="container">
       <div class="row gy-3">

@@ -7,19 +7,14 @@
 
 body {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-<<<<<<< HEAD
   background-color: #f8f9fa;
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
-=======
-  background-color: navy;
->>>>>>> d25a77ae9f8a4cfae3ead8553384492cbe7989af
 }
 
 .hero-title {
   animation: pulseGlow 3s infinite alternate;
 }
 
-<<<<<<< HEAD
 @keyframes pulseGlow {
   0% {
     transform: scale(1);
@@ -31,8 +26,6 @@ body {
   }
 }
 
-=======
->>>>>>> d25a77ae9f8a4cfae3ead8553384492cbe7989af
 .slide-image-wrapper {
   position: relative;
   width: 100%;
@@ -156,4 +149,22 @@ body.dark-mode .btn-outline-dark:hover {
   .custom-caption h2 {
     font-size: 1.4rem;
   }
+}
+footer {
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+body.dark-mode footer {
+  background-color: var(--dark-card) !important;
+  color: #f4f4f4 !important;
+  border-top-color: #333 !important;
+}
+
+body.dark-mode footer .text-muted,
+body.dark-mode footer a {
+  color: #aaa !important;
+}
+
+body.dark-mode footer a:hover {
+  color: #fff !important;
 }
