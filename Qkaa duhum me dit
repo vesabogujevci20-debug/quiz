@@ -1,0 +1,36 @@
+🎯 QUIZ
+
+loadQuestion()
+     ↓
+Shfaq pyetjen
+
+checkAnswer()
+     ↓
+Kontrollon përgjigjen
+
+showResults()
+     ↓
+Shfaq pikët
+
+restartQuiz()
+     ↓
+Fillon prej fillimit
+
+
+🏠 MAIN PAGE
+
+populateLeaderboard()
+     ↓
+Mbush leaderboard-in
+
+handleFormSubmit()
+     ↓
+Kontrollon formularin
+
+toggleDarkMode()
+     ↓
+Ndërron Dark Mode
+
+$(document).ready()
+     ↓
+Pret që faqja të jetë gati
